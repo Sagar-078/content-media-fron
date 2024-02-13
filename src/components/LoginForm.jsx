@@ -12,7 +12,7 @@ const LoginForm = (Props) => {
     const[password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const { setUser} = useContext(AppContext);
+    const { setUser, setLoading} = useContext(AppContext);
     
 
     const submitHandler = async(e) => {
@@ -23,6 +23,7 @@ const LoginForm = (Props) => {
         }
     
         try{
+            setLoading(true);
           const config = {
             headers: {
               "Content-type": "application/json",
@@ -36,6 +37,7 @@ const LoginForm = (Props) => {
           // save in local storage and give name myuser
           localStorage.setItem("myuser", JSON.stringify(data));
           toast.success("Logged in successfully");
+            setLoading(false);
     
         }catch(err){
           toast.error("Invalid Id & Password !!");
