@@ -34,7 +34,7 @@ const ContentApp = () => {
 
       <div className='w-full flex justify-between max-md:flex-col max-md:justify-center max-md:gap-10'>
         <div className='flex flex-col w-[27%] max-xl:w-[33%] max-lg:w-[37%] max-md:w-full max-md:pr-10 '>
-          <div className='py-5 pl-28 flex flex-col gap-5'>
+          <div className='py-5 pl-28 flex items-center flex-col gap-5'>
             <div className=' '>
               <img src={user?.profile} alt='' className=' h-48 w-48 rounded-full max-lg:h-40 max-lg:w-40'/>
             </div>
