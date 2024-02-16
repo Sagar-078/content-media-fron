@@ -13,7 +13,7 @@ const LoginForm = (Props) => {
     const[password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const { setUser, setLoading} = useContext(AppContext);
+    const { setUser, setLoading, loading} = useContext(AppContext);
     
 
     const submitHandler = async(e) => {
