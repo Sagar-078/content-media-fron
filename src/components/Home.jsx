@@ -3,6 +3,9 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import LoginForm from './LoginForm';
+import { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
+import Loader from './Loader';
 
 const Home = () => {
 
@@ -11,6 +14,7 @@ const Home = () => {
     const [email, setMail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const {loading, setLoading} = useContext(AppContext);
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -50,6 +54,7 @@ const Home = () => {
         console.log(name, email, password);
     
         try{
+            setLoading(true);
           const config = {
             headers: {
               "Content-type": "application/json",
@@ -63,9 +68,11 @@ const Home = () => {
           toast.success("Signed Up successfully");
     
           setSign(true);
+            setLoading(false);
         }catch(err){
           toast.error("This mail is taken !!");
           console.log(err);
+            setLoading(false);
         }
         
       }
@@ -75,7 +82,11 @@ const Home = () => {
     <div className='flex justify-center items-center h-[100vh] w-[100vw] '>
       <div className=' bg-gray-600 h-[100%] w-[100%]'>
         
-        <div className='w-full h-full flex justify-center items-center flex-col gap-4'>
+          {
+              loading ? (<Loading/>)
+              :
+              (
+                   <div className='w-full h-full flex justify-center items-center flex-col gap-4'>
           <div className='h-20 w-[30%] max-lg:w-[38%] max-md:w-[50%] max-sm:w-[80%] rounded-lg bg-slate-400 flex justify-center items-center'>
             <h1 className='font-mono font-bold text-white text-3xl max-sm:text-2xl'>cOnTeNt-MeDiA</h1>
           </div>
@@ -101,6 +112,8 @@ const Home = () => {
           }
 
         </div>
+              )
+          }
 
       </div>
     </div>
