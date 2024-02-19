@@ -83,7 +83,7 @@ const Home = () => {
       <div className=' bg-gray-600 h-[100%] w-[100%]'>
         
           {
-              loading ? (<Loading/>)
+              loading ? (<Loader/>)
               :
               (
                    <div className='w-full h-full flex justify-center items-center flex-col gap-4'>
