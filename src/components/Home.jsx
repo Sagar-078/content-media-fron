@@ -80,7 +80,7 @@ const Home = () => {
 
   return (
     <div className='flex justify-center items-center h-[100vh] w-[100vw] '>
-      <div className=' bg-gray-600 h-[100%] w-[100%]'>
+      <div className=' bg-gray-600 h-[100%] w-[100%] flex justify-center items-center'>
         
           {
               loading ? (<Loader/>)
